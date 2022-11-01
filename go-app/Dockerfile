@@ -1,4 +1,6 @@
 FROM golang:latest
 WORKDIR /app/go
 COPY ./ ./
-ENTRYPOINT [ "go", "run", "main.go" ]
+RUN go mod download
+RUN go build
+ENTRYPOINT [ "./diet-planning-app" ]
